@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAUTAM RAJ | 2048 Neon Game</title>
+<style>
+:root{--bg:#080b16;--panel:#11182b;--cyan:#00e5ff;--pink:#ff2bd6;--text:#eef7ff;--muted:#91a2bd}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#17234a 0,transparent 35%),radial-gradient(circle at 90% 85%,#30103d 0,transparent 35%),var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Arial,sans-serif;display:flex;justify-content:center;align-items:center;padding:22px}
+.wrap{width:min(100%,510px)}
+header{text-align:center;margin-bottom:18px}
+.tag{color:var(--cyan);letter-spacing:4px;font-size:12px;font-weight:800;text-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(30px,8vw,48px);margin:6px 0 2px;letter-spacing:2px;text-shadow:0 0 12px #00e5ff88,0 0 28px #ff2bd655}
+.subtitle{color:var(--muted);font-size:14px}
+.top{display:flex;gap:10px;margin:18px 0 12px}
+.score{flex:1;background:#11182b;border:1px solid #293858;border-radius:13px;padding:10px;text-align:center;box-shadow:0 0 18px #00e5ff12}
+.score small{display:block;color:var(--muted);font-size:11px;letter-spacing:2px}
+.score strong{font-size:24px;color:var(--cyan)}
+button{font:inherit;cursor:pointer;border:0}
+.action{background:linear-gradient(120deg,#00bcd4,#7c4dff);color:white;border-radius:12px;padding:0 16px;font-weight:800;box-shadow:0 0 18px #00d9ff44}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#0d1426;border:1px solid #263858;border-radius:17px;padding:10px;box-shadow:0 0 28px #00d9ff20,inset 0 0 25px #0008;touch-action:pan-y}
+.cell{aspect-ratio:1;background:#1a2540;border:1px solid #293858;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:clamp(22px,7vw,34px);font-weight:900;color:#fff;transition:background .12s,transform .12s;text-shadow:0 0 10px #fff5}
+.v2{background:#183d55;color:#b8f5ff}.v4{background:#155b70;color:#c8fbff}.v8{background:#7040a8}.v16{background:#a52c91}.v32{background:#d52e72}.v64{background:#ed553e}.v128{background:#b88a20;font-size:clamp(19px,6vw,29px)}.v256{background:#c69c16;font-size:clamp(19px,6vw,29px)}.v512{background:#d5b52a;color:#172033;font-size:clamp(19px,6vw,29px)}.v1024,.v2048{background:linear-gradient(135deg,#00e5ff,#ff2bd6);color:#07101e;font-size:clamp(17px,5.5vw,26px);box-shadow:0 0 18px #00e5ff88}
+.help{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;margin:15px 0}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:220px;margin:0 auto}
+.controls button{background:#17233d;color:var(--cyan);border:1px solid #315071;border-radius:10px;padding:12px;font-size:19px;box-shadow:0 0 12px #00e5ff12}
+.controls button:active,.action:active{transform:scale(.96)}
+.controls .up{grid-column:2}
+.controls .left{grid-column:1;grid-row:2}.controls .down{grid-column:2;grid-row:2}.controls .right{grid-column:3;grid-row:2}
+footer{text-align:center;color:#647895;font-size:11px;margin-top:20px;letter-spacing:2px}
+.overlay{position:fixed;inset:0;background:#050814d9;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.modal{background:#11182b;border:1px solid var(--cyan);border-radius:18px;padding:28px;text-align:center;max-width:330px;box-shadow:0 0 35px #00e5ff55}
+.modal h2{color:var(--cyan);margin-top:0}
+.modal button{background:linear-gradient(120deg,#00bcd4,#7c4dff);color:white;padding:12px 20px;border-radius:10px;font-weight:800}
+.login-screen{position:fixed;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 15% 10%,#17234a 0,transparent 35%),radial-gradient(circle at 90% 85%,#30103d 0,transparent 35%),#080b16}
+.login-card{width:min(100%,390px);padding:28px;background:#11182b;border:1px solid #00e5ff88;border-radius:20px;box-shadow:0 0 35px #00e5ff30;text-align:center}
+.login-card h2{margin:8px 0;color:var(--cyan);font-size:28px;text-shadow:0 0 14px #00e5ff66}
+.login-card p{color:var(--muted);font-size:13px;margin-bottom:20px}
+.login-card input{display:block;width:100%;margin:12px 0;padding:14px;border-radius:10px;border:1px solid #315071;background:#0b1222;color:white;font-size:16px;outline:none}
+.login-card input:focus{border-color:var(--cyan);box-shadow:0 0 12px #00e5ff33}
+.login-card button{width:100%;padding:13px;margin-top:8px;border-radius:10px;background:linear-gradient(120deg,#00bcd4,#7c4dff);color:white;font-weight:800}
+.login-note{font-size:11px!important;line-height:1.5;margin-top:16px!important}
+#gameApp{display:none}
+@media(max-width:380px){.board{gap:7px;padding:7px}.top{gap:6px}.action{padding:0 10px}}
+</style>
+</head>
+<body>
+<section class="login-screen" id="loginScreen">
+ <div class="login-card">
+  <div class="tag">⚡ NEON ARCADE ⚡</div>
+  <h2>WELCOME TO 2048</h2>
+  <p>Sign in to start your number puzzle game.</p>
+  <form id="loginForm">
+   <input id="playerName" type="text" placeholder="Enter your name" maxlength="24" autocomplete="username" required>
+   <input id="demoPassword" type="password" placeholder="Enter any password" autocomplete="current-password" required>
+   <button type="submit">LOGIN &amp; PLAY</button>
+  </form>
+  <p class="login-note">Demo login only: this page does not create an online account or save your password. Any non-empty password will work on this device.</p>
+  <div class="tag">DESIGN BY GAUTAM</div>
+ </div>
+</section>
+<div id="gameApp">
+<main class="wrap">
+<header><div class="tag">⚡ NEON ARCADE ⚡</div><h1>2048 NEON GAME</h1><div class="subtitle">DESIGN BY GAUTAM • NUMBER PUZZLE GAME</div></header>
+<section class="top">
+ <div class="score"><small>SCORE</small><strong id="score">0</strong></div>
+ <div class="score"><small>BEST</small><strong id="best">0</strong></div>
+ <button class="action" id="new">↻ New Game</button><button class="action" id="logout" type="button">Logout</button>
+</section>
+<div class="board" id="board" aria-label="2048 game board"></div>
+<p class="help">Use <b>arrow keys</b> or the buttons below to move tiles.<br>Join matching numbers to reach <b>2048!</b></p>
+<div class="controls" aria-label="Touch controls">
+ <button class="up" data-dir="up">▲</button><button class="left" data-dir="left">◀</button><button class="down" data-dir="down">▼</button><button class="right" data-dir="right">▶</button>
+</div>
+<footer>BUILT WITH HTML • CSS • JAVASCRIPT</footer>
+</main>
+</div>
+<div class="overlay" id="overlay"><div class="modal"><h2 id="message">YOU WIN!</h2><p id="detail">You reached 2048!</p><button id="continue">Keep Playing</button> <button id="again">New Game</button></div></div>
+<script>
+const loginForm=document.getElementById('loginForm');
+loginForm.addEventListener('submit',function(e){
+ e.preventDefault();
+ const name=document.getElementById('playerName').value.trim();
+ const password=document.getElementById('demoPassword').value;
+ if(!name||!password)return;
+ document.getElementById('loginScreen').style.display='none';
+ document.getElementById('gameApp').style.display='block';
+ document.querySelector('.subtitle').textContent='WELCOME, '+name.toUpperCase()+' • DESIGN BY GAUTAM';
+ document.getElementById('demoPassword').value='';
+});
+document.getElementById('logout').addEventListener('click',function(){
+ document.getElementById('gameApp').style.display='none';
+ document.getElementById('loginScreen').style.display='flex';
+ document.getElementById('loginForm').reset();
+});
+const boardEl=document.getElementById('board'),scoreEl=document.getElementById('score'),bestEl=document.getElementById('best');
+let grid,score=0,best=Number(localStorage.getItem('gautam2048best')||0),won=false,keepPlaying=false,over=false;
+bestEl.textContent=best;
+function emptyGrid(){return Array.from({length:4},()=>Array(4).fill(0))}
+function addTile(){let empty=[];grid.forEach((r,y)=>r.forEach((v,x)=>{if(!v)empty.push([y,x])}));if(!empty.length)return;let [y,x]=empty[Math.floor(Math.random()*empty.length)];grid[y][x]=Math.random()<.9?2:4}
+function start(){grid=emptyGrid();score=0;won=false;keepPlaying=false;over=false;addTile();addTile();document.getElementById('overlay').classList.remove('show');render()}
+function render(){boardEl.innerHTML='';grid.flat().forEach(v=>{let d=document.createElement('div');d.className='cell'+(v?' v'+Math.min(v,2048):'');d.textContent=v||'';boardEl.appendChild(d)});scoreEl.textContent=score;bestEl.textContent=best}
+function slide(line){let a=line.filter(Boolean);for(let i=0;i<a.length-1;i++){if(a[i]===a[i+1]){a[i]*=2;score+=a[i];a[i+1]=0}}a=a.filter(Boolean);while(a.length<4)a.push(0);return a}
+function move(dir){if(over)return;let old=JSON.stringify(grid),next=emptyGrid();if(dir==='left'||dir==='right'){for(let y=0;y<4;y++){let row=grid[y].slice();if(dir==='right')row.reverse();row=slide(row);if(dir==='right')row.reverse();next[y]=row}}else{for(let x=0;x<4;x++){let col=grid.map(r=>r[x]);if(dir==='down')col.reverse();col=slide(col);if(dir==='down')col.reverse();for(let y=0;y<4;y++)next[y][x]=col[y]}}grid=next;if(JSON.stringify(grid)===old)return;addTile();if(score>best){best=score;localStorage.setItem('gautam2048best',best)}render();if(!won&&!keepPlaying&&grid.flat().includes(2048)){won=true;showModal('🎉 YOU WIN!','Amazing! You made the 2048 tile.')}else if(!canMove()){over=true;showModal('GAME OVER','No more moves. Try again!')}}
+function canMove(){if(grid.flat().includes(0))return true;for(let y=0;y<4;y++)for(let x=0;x<4;x++){if(x<3&&grid[y][x]===grid[y][x+1])return true;if(y<3&&grid[y][x]===grid[y+1][x])return true}return false}
+function showModal(title,detail){document.getElementById('message').textContent=title;document.getElementById('detail').textContent=detail;document.getElementById('continue').style.display=over?'none':'';document.getElementById('overlay').classList.add('show')}
+document.addEventListener('keydown',e=>{let map={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};if(map[e.key]){e.preventDefault();move(map[e.key])}});
+document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>move(b.dataset.dir)));
+document.getElementById('new').onclick=start;document.getElementById('again').onclick=start;
+document.getElementById('continue').onclick=()=>{keepPlaying=true;document.getElementById('overlay').classList.remove('show')};
+let touchX=0,touchY=0;boardEl.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;touchY=e.changedTouches[0].clientY},{passive:true});
+boardEl.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-touchX,dy=e.changedTouches[0].clientY-touchY;if(Math.max(Math.abs(dx),Math.abs(dy))<25)return;move(Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up'))},{passive:true});
+start();
+</script>
+</body>
+</html>
