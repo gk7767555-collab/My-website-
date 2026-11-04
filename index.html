@@ -1,100 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2457d6">
-  <title>STUDY MASTER | Designed by Gautam</title>
-  <link rel="manifest" href="manifest.json">
-  <style>
-    :root{--blue:#2457d6;--navy:#172554;--purple:#7656d6;--bg:#f3f6ff;--ink:#18233d}
-    *{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}
-    header{background:linear-gradient(120deg,var(--blue),var(--purple));color:white;padding:24px 18px 30px;border-radius:0 0 26px 26px}
-    .top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:800;font-size:23px;letter-spacing:.5px}
-    .tag{font-size:12px;opacity:.9;margin-top:4px}.pill{border:1px solid #ffffff80;padding:8px 11px;border-radius:18px;font-size:12px}
-    h1{font-size:25px;margin:25px 0 7px} header p{margin:0;opacity:.94}
-    main{max-width:980px;margin:auto;padding:18px}.section-title{font-size:19px;margin:22px 0 12px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
-    .card{background:white;border-radius:16px;padding:16px;box-shadow:0 5px 18px #1d347010;border:1px solid #e8edff}
-    .card .icon{font-size:25px}.card h3{margin:9px 0 5px;font-size:16px}.card p{margin:0;color:#66718b;font-size:13px;line-height:1.4}
-    .panel{background:white;border-radius:18px;padding:17px;box-shadow:0 5px 18px #1d347010}
-    label{display:block;font-size:13px;margin:10px 0 5px;color:#4a5670}
-    select,input{width:100%;padding:12px;border:1px solid #dce3f5;border-radius:10px;background:#fbfcff;font-size:15px}
-    button{border:0;border-radius:11px;padding:11px 15px;background:var(--blue);color:white;font-weight:700;font-size:14px;cursor:pointer}
-    button.secondary{background:#edf1ff;color:var(--blue)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
-    .notice{font-size:12px;color:#66718b;line-height:1.5;margin-top:12px}
-    nav{position:sticky;bottom:0;background:#ffffffed;backdrop-filter:blur(8px);display:flex;justify-content:space-around;padding:10px 4px;border-top:1px solid #e4e9f5}
-    nav button{background:transparent;color:#4e5a75;padding:8px;font-size:12px}
-    nav button.active{color:var(--blue);background:#edf1ff}
-    .hidden{display:none}.list-item{padding:12px 0;border-bottom:1px solid #edf0f7}.list-item:last-child{border:0}
-    footer{text-align:center;padding:22px;color:#7b8499;font-size:12px}
-    @media(min-width:700px){header{padding:28px max(24px,calc((100% - 940px)/2)) 34px}}
-  </style>
-</head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#3346a8"><title>STUDY MASTER | Designed by Gautam</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--blue:#3346a8;--purple:#7652c8;--ink:#202544;--muted:#68708b;--bg:#f3f5ff;--card:#fff}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}header{background:linear-gradient(120deg,var(--blue),var(--purple));color:white;padding:24px 18px 20px}header h1{margin:0;font-size:26px}header p{margin:7px 0 0;opacity:.9}.wrap{max-width:980px;margin:auto;padding:16px}.nav{display:flex;gap:8px;overflow:auto;padding:10px 0}.nav button,.btn{border:0;border-radius:12px;padding:11px 14px;background:#e6e9ff;color:#29377f;font-weight:700;white-space:nowrap;cursor:pointer}.nav button.active,.btn.primary{background:var(--blue);color:white}.panel{display:none}.panel.active{display:block}.card{background:var(--card);padding:18px;border-radius:16px;margin:12px 0;box-shadow:0 5px 20px #27336a12}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.tile{background:white;border-radius:16px;padding:18px;border:1px solid #e6e8fa}.tile b{font-size:23px;color:var(--blue)}h2{margin:5px 0 12px}h3{margin:0 0 8px}p{line-height:1.5}.muted{color:var(--muted)}label{display:block;margin:10px 0 5px;font-weight:700}input,select,textarea{width:100%;padding:12px;border:1px solid #ccd2ed;border-radius:10px;font:inherit;background:white;color:var(--ink)}textarea{min-height:90px}button{font:inherit}.row{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.row>*{flex:1}.item{padding:12px;border:1px solid #e5e8f8;border-radius:12px;margin:8px 0;background:#fbfbff}.answer{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border:1px solid #ccd2ed;border-radius:10px;background:white;cursor:pointer}.answer:focus,.answer:hover{border-color:var(--purple)}.small{font-size:13px}.footer{text-align:center;color:var(--muted);padding:25px 8px}.hidden{display:none!important}
+</style></head>
 <body>
-<header>
-  <div class="top"><div><div class="brand">📘 STUDY MASTER</div><div class="tag">Designed by Gautam</div></div><div class="pill">Hindi • English</div></div>
-  <h1>पढ़ाई अब होगी आसान!</h1><p>कक्षा 1 से 12 तक — सीखें, अभ्यास करें और आगे बढ़ें।</p>
-</header>
-<main>
-  <section id="home">
-    <h2 class="section-title">अपनी पढ़ाई चुनें</h2>
-    <div class="panel">
-      <label for="board">अपना बोर्ड चुनें</label>
-      <select id="board"><option>CBSE</option><option>BSEB (Bihar Board)</option><option>ICSE</option><option>Jharkhand Board</option><option>अन्य State Board</option></select>
-      <label for="class">अपनी कक्षा चुनें</label>
-      <select id="class"><option>Class 1</option><option>Class 2</option><option>Class 3</option><option>Class 4</option><option>Class 5</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option selected>Class 10</option><option>Class 11</option><option>Class 12</option></select>
-      <label for="subject">विषय चुनें</label>
-      <select id="subject"><option>Mathematics</option><option>Science</option><option>English</option><option>Hindi</option><option>Social Science</option><option>Computer</option></select>
-      <div class="actions"><button onclick="showSelection()">मेरी पढ़ाई खोलें</button><button class="secondary" onclick="resetSelection()">Reset</button></div>
-      <p id="selection" class="notice">बोर्ड, कक्षा और विषय चुनकर पढ़ाई शुरू करें।</p>
-    </div>
-    <h2 class="section-title">मुख्य सुविधाएँ</h2>
-    <div class="grid">
-      <div class="card"><div class="icon">📚</div><h3>Notes</h3><p>विषय के अनुसार नोट्स पढ़ें।</p></div>
-      <div class="card"><div class="icon">📝</div><h3>Online Test</h3><p>अपनी तैयारी जाँचें।</p></div>
-      <div class="card"><div class="icon">🧠</div><h3>Daily Quiz</h3><p>हर दिन नए सवालों का अभ्यास।</p></div>
-      <div class="card"><div class="icon">📅</div><h3>Study Timetable</h3><p>पढ़ाई का समय व्यवस्थित करें।</p></div>
-    </div>
-  </section>
-
-  <section id="notes" class="hidden">
-    <h2 class="section-title">📚 Notes</h2><div class="panel">
-      <p><b>अभी शुरुआत हो रही है!</b></p>
-      <p class="notice">यह शुरुआती संस्करण है। अलग-अलग बोर्ड और कक्षाओं के सही नोट्स अगले चरण में जोड़ेंगे। किसी भी विषय की किताब/अध्याय का नाम बताकर सामग्री तैयार की जा सकती है।</p>
-    </div>
-  </section>
-  <section id="quiz" class="hidden">
-    <h2 class="section-title">🧠 Sample Quiz</h2><div class="panel">
-      <p><b>प्रश्न:</b> 12 × 8 का मान कितना है?</p>
-      <div class="actions"><button class="secondary" onclick="answer(false)">86</button><button class="secondary" onclick="answer(true)">96</button><button class="secondary" onclick="answer(false)">108</button></div>
-      <p id="quiz-result" class="notice">एक उत्तर चुनें।</p>
-    </div>
-  </section>
-  <section id="profile" class="hidden">
-    <h2 class="section-title">👤 Student Profile</h2><div class="panel">
-      <label for="student">आपका नाम</label><input id="student" placeholder="अपना नाम लिखें">
-      <div class="actions"><button onclick="saveName()">नाम सेव करें</button></div>
-      <p id="saved-name" class="notice">यह नाम केवल इसी डिवाइस के ब्राउज़र में सेव होगा।</p>
-      <p class="notice">ध्यान दें: यह demo profile है, सुरक्षित online account/login नहीं। असली login बाद में सुरक्षित backend के साथ जोड़ेंगे।</p>
-    </div>
-  </section>
+<header><div class="wrap"><h1>📘 STUDY MASTER</h1><p>Designed by Gautam · पढ़ो, अभ्यास करो और आगे बढ़ो</p></div></header>
+<main class="wrap">
+<div class="nav" aria-label="मुख्य मेनू"><button class="active" data-tab="home">होम</button><button data-tab="notes">Notes</button><button data-tab="quiz">MCQ Test</button><button data-tab="daily">Daily Quiz</button><button data-tab="timetable">Timetable</button><button data-tab="profile">Profile</button></div>
+<section id="home" class="panel active"><div class="card"><h2>स्वागत है! 👋</h2><p>अपनी कक्षा चुनें और पढ़ाई शुरू करें। यह शुरुआती संस्करण है; अभी इसमें नमूना नोट्स और प्रश्न दिए गए हैं।</p><label for="classPick">अपनी कक्षा चुनें</label><select id="classPick"><option>Class 10</option><option>Class 9</option><option>Class 8</option><option>Class 11</option><option>Class 12</option><option>Class 1–7</option></select></div><div class="grid"><div class="tile"><b>📚</b><h3>Notes</h3><p class="muted">विषय के अनुसार नोट्स पढ़ें।</p></div><div class="tile"><b>📝</b><h3>MCQ Test</h3><p class="muted">अपनी तैयारी जाँचें।</p></div><div class="tile"><b>🌟</b><h3>Daily Quiz</h3><p class="muted">रोज़ एक नया अभ्यास।</p></div><div class="tile"><b>🗓️</b><h3>Timetable</h3><p class="muted">अपना पढ़ाई का समय लिखें।</p></div></div></section>
+<section id="notes" class="panel"><div class="card"><h2>📚 Study Notes</h2><p class="muted">अभी नमूना नोट्स उपलब्ध हैं। आगे हर कक्षा और बोर्ड के अध्याय जोड़े जा सकते हैं।</p><label>विषय</label><select id="subject"><option value="science">विज्ञान</option><option value="math">गणित</option><option value="english">English</option><option value="social">सामाजिक विज्ञान</option></select><div id="noteText" class="item"></div></div></section>
+<section id="quiz" class="panel"><div class="card"><h2>📝 MCQ Practice Test</h2><p class="muted">नमूना प्रश्न — सही विकल्प चुनें।</p><div id="mcq"></div><button class="btn primary" id="checkQuiz">उत्तर जाँचें</button><p id="quizResult" aria-live="polite"></p></div></section>
+<section id="daily" class="panel"><div class="card"><h2>🌟 Daily Quiz</h2><p>आज का छोटा अभ्यास प्रश्न:</p><h3>सौरमंडल का सबसे बड़ा ग्रह कौन-सा है?</h3><div id="dailyAnswers"></div><p id="dailyResult" aria-live="polite"></p></div></section>
+<section id="timetable" class="panel"><div class="card"><h2>🗓️ My Timetable</h2><label>समय</label><input id="studyTime" placeholder="जैसे: शाम 5:00–6:00"><label>विषय / काम</label><input id="studyTask" placeholder="जैसे: गणित - अध्याय 1"><button class="btn primary" id="addTask">समय जोड़ें</button><div id="taskList"></div></div></section>
+<section id="profile" class="panel"><div class="card"><h2>👤 Profile</h2><p class="muted">यह केवल इस मोबाइल/ब्राउज़र में नाम सेव करता है। यह ऑनलाइन अकाउंट या सुरक्षित लॉगिन नहीं है।</p><label>आपका नाम</label><input id="studentName" placeholder="अपना नाम लिखें"><button class="btn primary" id="saveProfile">नाम सेव करें</button><p id="profileMsg" aria-live="polite"></p></div></section>
+<div class="footer">STUDY MASTER · Designed by Gautam</div>
 </main>
-<nav>
-  <button class="active" onclick="tab('home',this)">🏠 Home</button>
-  <button onclick="tab('notes',this)">📚 Notes</button>
-  <button onclick="tab('quiz',this)">🧠 Quiz</button>
-  <button onclick="tab('profile',this)">👤 Profile</button>
-</nav>
-<footer>© 2026 STUDY MASTER • Designed by Gautam</footer>
 <script>
-function tab(id,btn){document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.scrollTo(0,0)}
-function showSelection(){let b=document.getElementById('board').value,c=document.getElementById('class').value,s=document.getElementById('subject').value;document.getElementById('selection').textContent=`आपने चुना: ${b} • ${c} • ${s}. अब Notes और अभ्यास सामग्री जोड़ने का अगला चरण होगा।`}
-function resetSelection(){document.getElementById('board').selectedIndex=0;document.getElementById('class').value='Class 10';document.getElementById('subject').selectedIndex=0;document.getElementById('selection').textContent='बोर्ड, कक्षा और विषय चुनकर पढ़ाई शुरू करें।'}
-function answer(ok){document.getElementById('quiz-result').textContent=ok?'सही जवाब! बहुत बढ़िया।':'फिर कोशिश करें। सही उत्तर 96 है।'}
-function saveName(){let n=document.getElementById('student').value.trim();if(!n){document.getElementById('saved-name').textContent='पहले अपना नाम लिखें।';return}localStorage.setItem('studyMasterName',n);document.getElementById('saved-name').textContent='स्वागत है, '+n+'!'}
-let old=localStorage.getItem('studyMasterName');if(old){document.getElementById('student').value=old;document.getElementById('saved-name').textContent='स्वागत है, '+old+'!'}
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
-</script>
-</body>
-</html>
+const tabs=document.querySelectorAll('[data-tab]');tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')}));
+const notes={science:'विज्ञान: पदार्थ वह है जिसका द्रव्यमान होता है और जो स्थान घेरता है। पदार्थ की सामान्य अवस्थाएँ ठोस, द्रव और गैस हैं।',math:'गणित: द्विघात समीकरण का सामान्य रूप ax² + bx + c = 0 है, जहाँ a ≠ 0।',english:'English: A noun is the name of a person, place, animal, thing, or idea. Example: student, school, book.',social:'सामाजिक विज्ञान: भारत एक लोकतांत्रिक गणराज्य है। संविधान देश के शासन के मूल नियम बताता है।'};function showNote(){document.getElementById('noteText').textContent=notes[document.getElementById('subject').value]}document.getElementById('subject').addEventListener('change',showNote);showNote();
+const questions=[{q:'पौधे अपना भोजन किस प्रक्रिया से बनाते हैं?',a:['प्रकाश संश्लेषण','वाष्पीकरण','श्वसन','संघनन'],correct:0},{q:'12 × 8 कितना होता है?',a:['86','96','108','88'],correct:1},{q:'भारत की राजधानी क्या है?',a:['मुंबई','कोलकाता','नई दिल्ली','चेन्नई'],correct:2}];const mcq=document.getElementById('mcq');questions.forEach((q,i)=>{let d=document.createElement('div');d.className='item';d.innerHTML='<b>'+(i+1)+'. '+q.q+'</b>';q.a.forEach((a,j)=>{d.innerHTML+=`<label class="small"><input style="width:auto" type="radio" name="q${i}" value="${j}"> ${a}</label>`});mcq.appendChild(d)});document.getElementById('checkQuiz').onclick=()=>{let score=0;questions.forEach((q,i)=>{let v=document.querySelector(`input[name=q${i}]:checked`);if(v&&Number(v.value)===q.correct)score++});document.getElementById('quizResult').textContent=`आपका स्कोर: ${score}/${questions.length}`};
+const daily=['बृहस्पति','मंगल','पृथ्वी','शुक्र'];daily.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=a;b.onclick=()=>{document.getElementById('dailyResult').textContent=a==='बृहस्पति'?'सही जवाब! 🎉':'फिर कोशिश करें। सही उत्तर: बृहस्पति।';};document.getElementById('dailyAnswers').appendChild(b)});
+let tasks=JSON.parse(localStorage.getItem('sm_tasks')||'[]');function drawTasks(){let el=document.getElementById('taskList');el.innerHTML='';tasks.forEach((t,i)=>{let d=document.createElement('div');d.className='item';d.textContent=t.time+' — '+t.task;let x=document.createElement('button');x.className='btn';x.textContent='हटाएँ';x.onclick=()=>{tasks.splice(i,1);localStorage.setItem('sm_tasks',JSON.stringify(tasks));drawTasks()};d.append(' ',x);el.appendChild(d)})}drawTasks();document.getElementById('addTask').onclick=()=>{let time=document.getElementById('studyTime').value.trim(),task=document.getElementById('studyTask').value.trim();if(!time||!task){alert('समय और विषय दोनों लिखें।');return}tasks.push({time,task});localStorage.setItem('sm_tasks',JSON.stringify(tasks));document.getElementById('studyTime').value='';document.getElementById('studyTask').value='';drawTasks()};
+const nameInput=document.getElementById('studentName');nameInput.value=localStorage.getItem('sm_name')||'';document.getElementById('saveProfile').onclick=()=>{localStorage.setItem('sm_name',nameInput.value.trim());document.getElementById('profileMsg').textContent='नाम इस ब्राउज़र में सेव हो गया।'};if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script></body></html>
